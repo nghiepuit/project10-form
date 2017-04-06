@@ -1,0 +1,75 @@
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Form Validate : Template Driven</h3>
+        </div>
+        <div class="panel-body">
+            <form novalidate autocomplete="false" #frmUser="ngForm" (ngSubmit)="onSubmitForm(frmUser.value)" class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label">Username</label>
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                        <input #username="ngModel" name="username" type="text" class="form-control" placeholder="Username" minlength="5" maxlength="20" [(ngModel)]="user.username" required>
+                        <span class="label label-danger" *ngIf="username.dirty && username.errors?.required">
+                            Username required
+                        </span>
+                        <span class="label label-danger" *ngIf="username.dirty && username.errors?.minlength">
+                            Username min length 5 character
+                        </span>
+                        <span class="label label-danger" *ngIf="username.dirty && username.errors?.maxlength">
+                            Username max length 20 character
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label">Email</label>
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                        <input 
+                            #email="ngModel"
+                            type="email" 
+                            class="form-control" 
+                            placeholder="Email" 
+                            name="email" 
+                            [(ngModel)]="user.email" 
+                            required
+                            pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" 
+                        >
+                    </div>
+                </div>
+                <div class="form-group" ngModelGroup="security">
+                    <label for="" class="col-sm-2 control-label">Password</label>
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                        <input #password="ngModel" type="text" class="form-control" placeholder="Password" name="password" [(ngModel)]="user.password" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label">Status</label>
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                        <input type="text" class="form-control" placeholder="Status" name="status" [(ngModel)]="user.status" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-sm-offset-2">
+                        <button [disabled]="frmUser.invalid" type="Submit" class="btn btn-primary">Submit</button>
+                        <button (click)="resetForm(frmUser)" type="button" class="btn btn-danger">Reset</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">Result :</h3>
+        </div>
+        <div class="panel-body">
+            <h5><strong>Input : </strong>{{ user | json }}</h5>
+            <ul class="list-group" *ngIf="resultSubmit">
+                <li class="list-group-item"><strong>Username : </strong>{{ resultSubmit.username }}</li>
+                <li class="list-group-item"><strong>Username : </strong>{{ resultSubmit.security.password }}</li>
+                <li class="list-group-item"><strong>Username : </strong>{{ resultSubmit.email }}</li>
+                <li class="list-group-item"><strong>Username : </strong>{{ resultSubmit.status }}</li>
+            </ul>
+        </div>
+    </div>
+</div>
