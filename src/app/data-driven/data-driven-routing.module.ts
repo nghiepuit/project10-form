@@ -4,7 +4,7 @@ import { RouterModule, Routes }  from '@angular/router';
 import { MyFormComponent } from './components/form/form.component';
 
 const appRoutes: Routes = [
-	{ path: 'form', component: MyFormComponent },
+	{ path: 'data-driven', component: MyFormComponent },
 ];
 
 @NgModule({
@@ -15,4 +15,4 @@ const appRoutes: Routes = [
     RouterModule
   ]
 })
-export class TemplateDrivenRoutingModule {}
+export class DataDrivenRoutingModule {}

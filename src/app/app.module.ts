@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 // import module
 import { TemplateDrivenModule } from './template-driven/template-driven.module';
+import { DataDrivenModule } from './data-driven/data-driven.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { TemplateDrivenModule } from './template-driven/template-driven.module';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    TemplateDrivenModule
+    TemplateDrivenModule,
+    DataDrivenModule
   ],
   declarations: [
     AppComponent,
